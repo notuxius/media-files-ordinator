@@ -2,7 +2,6 @@
 
 import os
 import shutil
-import sys
 from os.path import expanduser
 
 import click
@@ -78,7 +77,7 @@ def move_files(files, src_folder, dst_folder):
         # if file already exists or other error
         except shutil.Error as e:
             print(e)
-            print((os.path.join(src_folder, file)))
+            print(os.path.join(src_folder, file))
             # print("Removing the existing file")
             # os.remove(os.path.join(src_folder, file))
 
@@ -100,7 +99,7 @@ def order_files(*src_folders):
 
             files = {imgs_dst_folder: imgs, vids_dst_folder: vids}
 
-            if click.confirm(f"Move files from the folder?", default=True):
+            if click.confirm("Move files from the folder?", default=True):
                 for folder in files:
                     create_folder_if_not_exists(folder)
 
