@@ -36,11 +36,12 @@ vid_exts = [
 
 # curr_folder = os.path.dirname(os.path.realpath(__file__))
 home_folder = expanduser("~")
-docs_folder = os.path.join(home_folder, "Documents")
-chrome_download_folder = os.path.join(docs_folder, "chrome_download")
 
-imgs_folder = os.path.join(docs_folder, "_IMAGES")
-vids_folder = os.path.join(docs_folder, "_VIDEOS")
+docs_src_folder = os.path.join(home_folder, "Documents")
+chrome_download_src_folder = os.path.join(docs_src_folder, "chrome_download")
+
+imgs_media_dst_folder = os.path.join(docs_src_folder, "_IMAGES")
+vids_media_dst_folder = os.path.join(docs_src_folder, "_VIDEOS")
 
 
 def create_folder_if_not_exists(folder):
@@ -78,7 +79,7 @@ def order_media_files(*src_folders):
             imgs += list_media_files(src_folder, img_exts)
             vids += list_media_files(src_folder, vid_exts)
 
-            media_files = {imgs_folder: imgs, vids_folder: vids}
+            media_files = {imgs_media_dst_folder: imgs, vids_media_dst_folder: vids}
 
             for media_folder in media_files:
                 if media_files[media_folder]:
@@ -95,4 +96,4 @@ def order_media_files(*src_folders):
             pass
 
 
-order_media_files(docs_folder, chrome_download_folder)
+order_media_files(docs_src_folder, chrome_download_src_folder)
