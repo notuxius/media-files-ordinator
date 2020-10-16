@@ -58,7 +58,10 @@ def list_files(folder, exts):
     for ext in exts:
         # files += [file for file in os.listdir(folder) if file.endswith(ext)]
         for file in os.listdir(folder):
-            if file.endswith(ext):
+            _, file_ext = os.path.splitext(file)
+
+            # except the leading dot
+            if file_ext.lower()[1:] == ext:
                 files.append(file)
                 num_of_files_ext[ext] = num_of_files_ext.get(ext, 0) + 1
 
